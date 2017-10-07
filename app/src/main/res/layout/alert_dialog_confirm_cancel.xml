@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 确认对话框样式【含有图标、文本内容、左右两个按钮】布局文件 -->
+<!--虽然layout根节点设置了宽高为match_parent，但是最终显示的宽高都非常小，原因是AlertDialog默认会把跟容器的宽高认为是wrap_content-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/alertdialogcomfirm_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/alert_dialog_confirm_bg"
+    android:layout_margin="@dimen/alert_dialog_confirm_margin"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <!-- 图标 -->
+    <ImageView
+        android:id="@+id/alertdialogconfirm_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/alert_dialog_confirm_img_padding"
+        android:background="@drawable/icon_info"
+        android:layout_gravity="center_horizontal"/>
+
+    <ScrollView
+        android:id="@+id/alertdialogconfirm_message_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/alert_dialog_confirm_message_padding"
+        >
+        <!-- 内容 -->
+        <TextView
+            android:id="@+id/alertdialogconfirm_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text=""
+            android:textColor="@color/alert_dialog_confirm_message_color"
+            android:textSize="@dimen/alert_dialog_confirm_message_text_size"
+            />
+
+    </ScrollView>
+    <!-- 底部按钮区域 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@android:color/transparent" >
+        <!-- 确定按钮 -->
+        <Button
+            android:id="@+id/alertdialogconfirm_confirm"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:background="@drawable/alert_dialog_confirm_left_btn_bg"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="@color/alert_dialog_confirm_btn_left_text_color"
+            android:textSize="@dimen/alert_dialog_confirm_btn_text_size"
+            android:paddingTop="@dimen/alert_dialog_confirm_btn_padding"
+            android:paddingBottom="@dimen/alert_dialog_confirm_btn_padding" />
+
+        <!-- 取消按钮 -->
+        <Button
+            android:id="@+id/alertdialogconfirm_cancel"
+            android:layout_width="0.0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/alert_dialog_confirm_right_btn_bg"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="@color/alert_dialog_confirm_btn_right_text_color"
+            android:textSize="@dimen/alert_dialog_confirm_btn_text_size"
+            android:paddingTop="@dimen/alert_dialog_confirm_btn_padding"
+            android:paddingBottom="@dimen/alert_dialog_confirm_btn_padding" />
+    </LinearLayout>
+
+</LinearLayout>
