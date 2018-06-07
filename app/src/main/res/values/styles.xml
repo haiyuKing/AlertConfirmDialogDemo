@@ -8,19 +8,16 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <!-- ************确认取消对话框（alertdialog）************ -->
-    <style name="style_dialog">
-        <item name="android:windowBackground">@null</item>
+    <!-- ==================确认取消对话框（alertdialog）================== -->
+    <style name="style_alert_confirm_dialog">
         <!-- Dialog的windowFrame框为无 -->
         <item name="android:windowFrame">@null</item>
         <!-- 是否显示title -->
-        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowNoTitle">false</item>
         <!-- 是否浮现在activity之上 -->
         <item name="android:windowIsFloating">true</item>
         <!-- 半透明 -->
         <item name="android:windowIsTranslucent">true</item>
-    </style>
-    <style name="style_alert_confirm_dialog" parent="@style/style_dialog">
         <!-- 设置dialog的背景：#00000000透明色 -->
         <item name="android:windowBackground">@android:color/transparent</item>
         <!-- 背景变灰：整个屏幕变灰，配合setCanceledOnTouchOutside(false) -->

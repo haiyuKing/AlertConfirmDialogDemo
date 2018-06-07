@@ -28,10 +28,12 @@ public class AlertConfirmDialog extends AlertDialog{
 	private Context context;//上下文
 
 	private ImageView mIconImg;//图标
+	private TextView mTitleTv;//提示
 	private ScrollView mMsgScroll;//内容的父节点，用于内容较多时可以滚动
 	private TextView mMessage;//内容
 	private Button mConfirmBtn;//确认按钮
 	private Button mCancelBtn;//取消按钮
+	private View mCancelLine;//取消按钮判断的竖线
 
 	private int iconImgResId = 0;//图标的resid值
 	private String mseeageStr = "";//内容文本
@@ -40,10 +42,11 @@ public class AlertConfirmDialog extends AlertDialog{
 	private boolean cancelButtonHidden = false;//是否隐藏取消按钮
 
 	public AlertConfirmDialog(Context context, int iconImgResId, String mseeageStr, String confirmBtnTvStr, String cancelBtnTvStr, boolean cancelButtonHidden) {
-		super(context, R.style.style_alert_confirm_dialog);
+
+		super(context, R.style.style_alert_confirm_dialog);//设置对话框样式
 
 		//设置为false，按对话框以外的地方不起作用
-		setCanceledOnTouchOutside(false);
+		setCanceledOnTouchOutside(true);
 		//设置为false，按返回键不能退出
 		setCancelable(true);
 
@@ -67,17 +70,23 @@ public class AlertConfirmDialog extends AlertDialog{
 	/**初始化view*/
 	private void initViews() {
 		mIconImg = (ImageView) findViewById(R.id.alertdialogconfirm_img);
+		mTitleTv = (TextView) findViewById(R.id.alertdialogconfirm_title);
 		mMsgScroll = (ScrollView) findViewById(R.id.alertdialogconfirm_message_scroll);
 		mMessage = (TextView) findViewById(R.id.alertdialogconfirm_message);
 		mConfirmBtn = (Button) findViewById(R.id.alertdialogconfirm_confirm);
 		mCancelBtn = (Button) findViewById(R.id.alertdialogconfirm_cancel);
+		mCancelLine = findViewById(R.id.cancel_line);
 	}
 
 	/**初始化数据*/
 	private void initDatas() {
-		//赋值新的图标
+		//赋值新的图标，如果图标为空，则直接显示提示标题即可
 		if(iconImgResId != 0){
 			mIconImg.setBackgroundResource(iconImgResId);
+			mTitleTv.setVisibility(View.GONE);
+		}else{
+			mIconImg.setVisibility(View.GONE);
+			mTitleTv.setVisibility(View.VISIBLE);
 		}
 		//赋值内容文本
 		mMessage.setText(mseeageStr);
@@ -91,7 +100,8 @@ public class AlertConfirmDialog extends AlertDialog{
 
 		if(cancelButtonHidden){//隐藏取消按钮
 			mCancelBtn.setVisibility(View.GONE);
-			mConfirmBtn.setBackgroundResource(R.drawable.alert_dialog_confirm_one_btn_bg);
+			mCancelLine.setVisibility(View.GONE);
+			mConfirmBtn.setBackgroundResource(R.drawable.alert_dialog_confirm_one_btn_bg);//设置确认按钮的背景
 		}
 
 		//设置内容文本居中对齐
@@ -123,6 +133,7 @@ public class AlertConfirmDialog extends AlertDialog{
 				}
 			}
 		});
+
 	}
 
 	/**初始化监听事件*/
@@ -150,12 +161,22 @@ public class AlertConfirmDialog extends AlertDialog{
 		});
 	}
 
+	@Override
+	public void dismiss() {
+		super.dismiss();
+		if(mOnCertainButtonClickListener != null){
+			mOnCertainButtonClickListener.onDismissListener();
+		}
+	}
+
 	public static abstract interface OnCertainButtonClickListener
 	{
 		//取消按钮的点击事件接口
 		public abstract void onCancleButtonClick();
 		//确认按钮的点击事件接口
 		public abstract void onCertainButtonClick();
+		//返回键触发的事件接口
+		public abstract  void onDismissListener();
 	}
 
 	private OnCertainButtonClickListener mOnCertainButtonClickListener;

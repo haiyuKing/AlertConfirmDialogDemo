@@ -10,20 +10,40 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <!-- 图标 -->
-    <ImageView
-        android:id="@+id/alertdialogconfirm_img"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/alert_dialog_confirm_img_padding"
-        android:background="@drawable/icon_info"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_marginBottom="@dimen/alert_dialog_confirm_img_padding">
+
+        <!-- 图标 -->
+        <ImageView
+            android:id="@+id/alertdialogconfirm_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_centerInParent="true"/>
+
+        <!-- 提示 -->
+        <TextView
+            android:id="@+id/alertdialogconfirm_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="提示"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:layout_centerInParent="true"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
 
     <ScrollView
         android:id="@+id/alertdialogconfirm_message_scroll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/alert_dialog_confirm_message_padding"
+        android:paddingLeft="@dimen/alert_dialog_confirm_message_padding"
+        android:paddingRight="@dimen/alert_dialog_confirm_message_padding"
+        android:paddingBottom="@dimen/alert_dialog_confirm_message_padding"
         >
         <!-- 内容 -->
         <TextView
@@ -37,25 +57,21 @@
             />
 
     </ScrollView>
+
+    <!-- 内容下的中横线 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:background="#80DFDFDF" />
+
     <!-- 底部按钮区域 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="@android:color/transparent" >
-        <!-- 确定按钮 -->
-        <Button
-            android:id="@+id/alertdialogconfirm_confirm"
-            android:layout_width="0.0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.0"
-            android:background="@drawable/alert_dialog_confirm_left_btn_bg"
-            android:gravity="center"
-            android:text="确定"
-            android:textColor="@color/alert_dialog_confirm_btn_left_text_color"
-            android:textSize="@dimen/alert_dialog_confirm_btn_text_size"
-            android:paddingTop="@dimen/alert_dialog_confirm_btn_padding"
-            android:paddingBottom="@dimen/alert_dialog_confirm_btn_padding" />
 
         <!-- 取消按钮 -->
         <Button
@@ -66,7 +82,30 @@
             android:background="@drawable/alert_dialog_confirm_right_btn_bg"
             android:gravity="center"
             android:text="取消"
+            android:textStyle="bold"
             android:textColor="@color/alert_dialog_confirm_btn_right_text_color"
+            android:textSize="@dimen/alert_dialog_confirm_btn_text_size"
+            android:paddingTop="@dimen/alert_dialog_confirm_btn_padding"
+            android:paddingBottom="@dimen/alert_dialog_confirm_btn_padding" />
+
+        <!-- 取消按钮旁边的中竖线 -->
+        <View
+            android:id="@+id/cancel_line"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#80DFDFDF"/>
+
+        <!-- 确定按钮 -->
+        <Button
+            android:id="@+id/alertdialogconfirm_confirm"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:background="@drawable/alert_dialog_confirm_left_btn_bg"
+            android:gravity="center"
+            android:text="确定"
+            android:textStyle="bold"
+            android:textColor="@color/alert_dialog_confirm_btn_left_text_color"
             android:textSize="@dimen/alert_dialog_confirm_btn_text_size"
             android:paddingTop="@dimen/alert_dialog_confirm_btn_padding"
             android:paddingBottom="@dimen/alert_dialog_confirm_btn_padding" />

@@ -47,6 +47,11 @@ public class MainActivity extends AppCompatActivity {
 					public void onCertainButtonClick() {
 						Toast.makeText(MainActivity.this,"重新登录",Toast.LENGTH_SHORT).show();
 					}
+
+					@Override
+					public void onDismissListener() {
+
+					}
 				});
 				confirmAlertDialog.show();
 			}
@@ -56,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 			@Override
 			public void onClick(View v) {
 				AlertConfirmDialog confirmAlertDialog = new AlertConfirmDialog(MainActivity.this,
-						0,"请检查用户名","","",true);
+						R.drawable.icon_info,"请检查用户名","","",true);
 				confirmAlertDialog.setOnCertainButtonClickListener(new AlertConfirmDialog.OnCertainButtonClickListener() {
 					@Override
 					public void onCancleButtonClick() {
@@ -65,6 +70,11 @@ public class MainActivity extends AppCompatActivity {
 					@Override
 					public void onCertainButtonClick() {
 						Toast.makeText(MainActivity.this,"确定",Toast.LENGTH_SHORT).show();
+					}
+
+					@Override
+					public void onDismissListener() {
+
 					}
 				});
 				confirmAlertDialog.show();
@@ -98,6 +108,11 @@ public class MainActivity extends AppCompatActivity {
 					@Override
 					public void onCertainButtonClick() {
 						Toast.makeText(MainActivity.this,"确定",Toast.LENGTH_SHORT).show();
+					}
+
+					@Override
+					public void onDismissListener() {
+
 					}
 				});
 				confirmAlertDialog.show();
