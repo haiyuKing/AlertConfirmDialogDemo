@@ -58,6 +58,7 @@ public class AlertConfirmDialog extends AlertDialog{
 		this.cancelButtonHidden = cancelButtonHidden;
 	}
 
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.alert_dialog_confirm_cancel);
