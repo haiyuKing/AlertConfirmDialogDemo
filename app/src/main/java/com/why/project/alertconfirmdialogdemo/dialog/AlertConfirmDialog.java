@@ -119,6 +119,9 @@ public class AlertConfirmDialog extends AlertDialog{
 		final int screenHeight = display.heightPixels;
 //		Log.w(TAG,"display.widthPixels="+display.widthPixels);
 //		Log.w(TAG,"screenHeight="+screenHeight);
+		//防止内容动态赋值的时候，宽度变化导致跳动
+		mMsgScroll.setLayoutParams(new LinearLayout.LayoutParams(display.widthPixels - context.getResources().getDimensionPixelOffset(R.dimen.alert_dialog_confirm_margin) * 2,
+				ViewGroup.LayoutParams.WRAP_CONTENT));
 		//runnable中的方法会在View的measure、layout等事件后触发
 		mMsgScroll.post(new Runnable() {
 			@Override
@@ -167,6 +170,21 @@ public class AlertConfirmDialog extends AlertDialog{
 		super.dismiss();
 		if(mOnCertainButtonClickListener != null){
 			mOnCertainButtonClickListener.onDismissListener();
+		}
+	}
+
+	//设置取消按钮的颜色【重点标记，用于引导用户点击】
+	public void setCancelBtnColor(){
+		if(mCancelBtn !=null){
+			mCancelBtn.setTextColor(context.getResources().getColor(R.color.alert_dialog_confirm_title_color));
+		}
+
+	}
+
+	//设置确定按钮的颜色【重点标记，用于引导用户点击】
+	public void setConfirmBtnColor(){
+		if(mConfirmBtn !=null) {
+			mConfirmBtn.setTextColor(context.getResources().getColor(R.color.alert_dialog_confirm_title_color));
 		}
 	}
 

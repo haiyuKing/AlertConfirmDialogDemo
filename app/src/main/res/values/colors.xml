@@ -5,6 +5,8 @@
     <color name="colorAccent">#FF4081</color>
 
     <!-- ==================确认取消对话框（alertdialog）================== -->
+    <!-- 对话框的标题颜色 -->
+    <color name="alert_dialog_confirm_title_color">#4898e2</color>
     <!-- 对话框的填充颜色 -->
     <color name="alert_dialog_confirm_solid_color">#ffffffff</color>
     <!-- 对话框的内容颜色 -->
